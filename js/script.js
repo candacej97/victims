@@ -44,7 +44,6 @@ var triggerBtn = document.getElementById('download-button');
 triggerBtn.addEventListener("click", function(){
   var table = document.getElementById('victim-table');
   toggleClass(table);
-  //send this trigger button to the function
-  toggleHTML(this);
+  toggleHTML(triggerBtn);
   // getData();
 });
