@@ -36,7 +36,9 @@ function toggleHTML(el) {
   }
 }
 
-
+function testBtn(){
+  console.log("Btn was clicked");
+}
 
 
 
