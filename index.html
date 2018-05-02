@@ -12,6 +12,8 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link rel="stylesheet" href="css/styles.css">
+
+      <script type="text/javascript" src="js/script.js"></script>
     </head>
 
     <body>
@@ -95,7 +97,6 @@
       <!--JavaScript at end of body for optimized loading-->
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
-      <script type="text/javascript" src="js/script.js"></script>
 
       <!-- Firebase Data -->
       <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
@@ -119,11 +120,28 @@
 
         var ref = database.ref();
 
-        ref.on("value", function(snapshot) {
-           console.log(snapshot.val());
-        }, function (error) {
-           console.log("Error: " + error.code);
+        /*ref.on("value",
+
+          function(snapshot) {
+             console.log(snapshot.val());
+           },
+           function (error) {
+             console.log("Error: " + error.code);
+          }
+
+        );*/
+
+        ref.limitToFirst(100).once('value', function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            console.log(childData);
+          });
         });
+
+
+
+
       </script>
     </body>
   </html>
