@@ -30,9 +30,9 @@ function toggleHTML(el) {
 
   // change depending on what the current innerHTML says
   if (el.innerHTML = "Hide Victims") {
-    //el.innerHTML = show;
+    el.innerHTML = show;
   } else {
-    //el.innerHTML = hide;
+    el.innerHTML = hide;
   }
 }
 
@@ -42,8 +42,8 @@ function toggleHTML(el) {
 
 var triggerBtn = document.getElementById('download-button');
 triggerBtn.addEventListener("click", function(){
-  var htmlEl = document.getElementsByClassName('section');
-  toggleClass(htmlEl);
+  var table = document.getElementById('victim-table');
+  toggleClass(table);
   //send this trigger button to the function
   toggleHTML(this);
   // getData();
