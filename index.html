@@ -44,12 +44,11 @@
 
 
       <div class="container">
-        <!-- TODO: add event listener to #download-button which loads info into the table -->
         <div class="section disabled-view" id="victim-table">
 
           <!-- NOTE: this table is empty to be filled onclick of #download-button -->
           <table class="responsive-table">
-            <thead>
+            <thead id="table-header">
               <tr>
                   <th></th>
                   <th></th>
@@ -57,7 +56,7 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody id="table-body">
               <tr>
                 <td></td>
                 <td></td>
@@ -131,6 +130,7 @@
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             console.log(childData);
+            console.log(childSnapshot.val('Anno'));
           });
         });
 
@@ -138,6 +138,10 @@
         // TODO: Add a form to sort by region, year, age, show more
 
 
+        for (var i = 0; i < 20; i++) {
+          // print the first and last name, year, age, region
+          var tablerow = "<td>" + v + "</td>"
+        }
 
 
 
@@ -160,7 +164,6 @@
         var triggerBtn = document.getElementById('download-button');
         triggerBtn.addEventListener("click", function(){
           var table = document.getElementById('victim-table');
-          console.log("Btn was clicked");
           toggleClass(table, triggerBtn);
           // getData();
         });
