@@ -144,27 +144,16 @@
 
 
 
-        function toggleClass(el) {
+        function toggleClass(el, el2) {
           if (el.classList.contains('disabled-view')) {
             el.classList.add('enabled-view');
             el.classList.remove('disabled-view');
+            el2.innerHTML = "Hide Victims";
           }
           else if (el.classList.contains('enabled-view')) {
             el.classList.add('disabled-view');
             el.classList.remove('enabled-view');
-          }
-        }
-
-        function toggleHTML(el) {
-
-          var hide = "Hide Victims";
-          var show = "Show Victims";
-
-          // change depending on what the current innerHTML says
-          if (el.innerHTML = "Show Victims") {
-            el.innerHTML = hide;
-          } else {
-            el.innerHTML = show;
+            el2.innerHTML = "Show Victims";
           }
         }
 
@@ -172,8 +161,7 @@
         triggerBtn.addEventListener("click", function(){
           var table = document.getElementById('victim-table');
           console.log("Btn was clicked");
-          toggleClass(table);
-          toggleHTML(triggerBtn);
+          toggleClass(table, triggerBtn);
           // getData();
         });
 
