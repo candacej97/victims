@@ -41,10 +41,10 @@ function toggleHTML(el) {
 
 
 var triggerBtn = document.getElementById('download-button');
-triggerBtn.addEventListener(click, function(){
+triggerBtn.addEventListener("click", function(){
   var htmlEl = document.getElementsByClassName('section');
   toggleClass(htmlEl);
   //send this trigger button to the function
   toggleHTML(this);
   // getData();
-})
+});

@@ -1,3 +1,11 @@
 .page-footer {
   padding: 0;
 }
+
+.disabled-view {
+  visibility: hidden;
+}
+
+.enabled-view {
+  visibility: visible;
+}
