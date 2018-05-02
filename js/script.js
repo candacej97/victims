@@ -43,6 +43,7 @@ function toggleHTML(el) {
 var triggerBtn = document.getElementById('download-button');
 triggerBtn.addEventListener("click", function(){
   var table = document.getElementById('victim-table');
+  console.log("Btn was clicked");
   toggleClass(table);
   toggleHTML(triggerBtn);
   // getData();
