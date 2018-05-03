@@ -50,26 +50,17 @@
           <table class="responsive-table">
             <thead id="table-header">
               <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                <!-- TODO: Add a form to sort by region, year, age, show more -->
+                  <th>Nome</th>
+                  <th>Cognome</th>
+                  <th>Eta</th>
+                  <th>Anno</th>
+                  <th>Regione</th>
               </tr>
             </thead>
 
             <tbody id="table-body">
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
                 <td></td>
               </tr>
             </tbody>
@@ -114,41 +105,42 @@
 
         var ref = database.ref();
 
-        /*ref.on("value",
-
-          function(snapshot) {
-             console.log(snapshot.val());
-           },
-           function (error) {
-             console.log("Error: " + error.code);
-          }
-
-        );*/
-
         ref.limitToFirst(20).once('value', function(snapshot) {
+
           snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
+
+            var tableRow = document.createElement("tr");   // Create a <tr> element
+
+            // elements for Nome, Cognome, Eta, Anno, Regione
+            var rowElNome = document.createElement("td");   // Create a <td> element
+            rowElNome.appendChild(document.createTextNode(childData.Nome));   // Append data to the element
+            tableRow.appendChild(rowElNome); // Append row element to the row
+
+            var rowElCog = document.createElement("td");
+            rowElCog.appendChild(document.createTextNode(childData.Cognome));
+            tableRow.appendChild(rowElCog);
+
+            var rowElEta = document.createElement("td");
+            rowElEta.appendChild(document.createTextNode(childData.Eta));
+            tableRow.appendChild(rowElEta);
+
+            var rowElAnno = document.createElement("td");
+            rowElAnno.appendChild(document.createTextNode(childData.Anno));
+            tableRow.appendChild(rowElAnno);
+
+            var rowElReg = document.createElement("td");
+            rowElReg.appendChild(document.createTextNode(childData.Regione));
+            tableRow.appendChild(rowElReg);
+
             console.log(childData);
             console.log(childKey);
-            console.log(childData.anno);
             console.log(childData.Anno);
           });
         });
 
-        // TODO: Take data and fill the table with it
         // TODO: Add a form to sort by region, year, age, show more
-
-
-        /*for (var i = 0; i < 20; i++) {
-          print the first and last name, year, age, region
-          var tablerow = "<td>" + i + "</td>"
-        }*/
-
-
-
-
-
 
         function toggleClass(el, el2) {
           if (el.classList.contains('disabled-view')) {
@@ -167,7 +159,6 @@
         triggerBtn.addEventListener("click", function(){
           var table = document.getElementById('victim-table');
           toggleClass(table, triggerBtn);
-          // getData();
         });
 
 
