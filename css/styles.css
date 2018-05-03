@@ -3,9 +3,9 @@
 }
 
 .disabled-view {
-  visibility: hidden;
+  display: none;
 }
 
 .enabled-view {
-  visibility: visible;
+  display: block;
 }
