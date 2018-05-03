@@ -1,5 +1,8 @@
 .page-footer {
   padding: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .disabled-view {

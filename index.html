@@ -32,7 +32,7 @@
           <br><br>
           <h1 class="header center orange-text">Get the Information</h1>
           <div class="row center">
-            <h5 class="header col s12 light">Many people who are victims of crime go unremembered by the public. Let that end right here.</h5>
+            <h5 class="header col s12 light">Many people who are victims of crime go forgotten by the public. Let that end right here.</h5>
           </div>
           <div class="row center">
             <a href="#victim-table" id="download-button" class="btn-large waves-effect waves-light orange">Show Victims</a>
@@ -46,11 +46,15 @@
       <div class="container">
         <div class="section disabled-view" id="victim-table">
 
+          <!-- TODO: Add a form to sort by region, year, age, show more -->
+          <form class="" action="index.html" method="post">
+
+          </form>
+
           <!-- NOTE: this table is empty to be filled onclick of #download-button -->
           <table class="responsive-table">
             <thead id="table-header">
               <tr>
-                <!-- TODO: Add a form to sort by region, year, age, show more -->
                   <th>Nome</th>
                   <th>Cognome</th>
                   <th>Eta</th>
@@ -86,72 +90,85 @@
       <!-- Firebase Data -->
       <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
       <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyDRZBlCtz9Zb_EvXcuj8fmPOxzvqnJal54",
-          authDomain: "poc-final-project.firebaseapp.com",
-          databaseURL: "https://poc-final-project.firebaseio.com",
-          projectId: "poc-final-project",
-          storageBucket: "poc-final-project.appspot.com",
-          messagingSenderId: "1003734821456"
-        };
-        firebase.initializeApp(config);
 
-        // Get a reference to the database service
-        var database = firebase.database();
+        function initFB() {
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDRZBlCtz9Zb_EvXcuj8fmPOxzvqnJal54",
+            authDomain: "poc-final-project.firebaseapp.com",
+            databaseURL: "https://poc-final-project.firebaseio.com",
+            projectId: "poc-final-project",
+            storageBucket: "poc-final-project.appspot.com",
+            messagingSenderId: "1003734821456"
+          };
+          firebase.initializeApp(config);
 
-        var ref = database.ref();
+          // Get a reference to the database service
+          var database = firebase.database();
 
-        ref.limitToFirst(20).once('value', function(snapshot) {
+          var ref = database.ref();
 
-          snapshot.forEach(function(childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
+          ref.limitToFirst(20).once('value', function(snapshot) {
 
-            var tableRow = document.createElement("tr");   // Create a <tr> element
+            snapshot.forEach(function(childSnapshot) {
+              var childKey = childSnapshot.key;
+              var childData = childSnapshot.val();
 
-            // elements for Nome, Cognome, Eta, Anno, Regione
-            var rowElNome = document.createElement("td");   // Create a <td> element
-            rowElNome.appendChild(document.createTextNode(childData.Nome));   // Append data to the element
-            tableRow.appendChild(rowElNome); // Append row element to the row
+              var tableRow = document.createElement("tr");   // Create a <tr> element
 
-            var rowElCog = document.createElement("td");
-            rowElCog.appendChild(document.createTextNode(childData.Cognome));
-            tableRow.appendChild(rowElCog);
+              // elements for Nome, Cognome, Eta, Anno, Regione
+              var rowElNome = document.createElement("td");   // Create a <td> element
+              rowElNome.appendChild(document.createTextNode(childData.Nome));   // Append data to the element
+              tableRow.appendChild(rowElNome); // Append row element to the row
 
-            var rowElEta = document.createElement("td");
-            rowElEta.appendChild(document.createTextNode(childData.Eta));
-            tableRow.appendChild(rowElEta);
+              var rowElCog = document.createElement("td");
+              rowElCog.appendChild(document.createTextNode(childData.Cognome));
+              tableRow.appendChild(rowElCog);
 
-            var rowElAnno = document.createElement("td");
-            rowElAnno.appendChild(document.createTextNode(childData.Anno));
-            tableRow.appendChild(rowElAnno);
+              var rowElEta = document.createElement("td");
+              rowElEta.appendChild(document.createTextNode(childData.Eta));
+              tableRow.appendChild(rowElEta);
 
-            var rowElReg = document.createElement("td");
-            rowElReg.appendChild(document.createTextNode(childData.Regione));
-            tableRow.appendChild(rowElReg);
+              var rowElAnno = document.createElement("td");
+              rowElAnno.appendChild(document.createTextNode(childData.Anno));
+              tableRow.appendChild(rowElAnno);
 
-            console.log(childData);
-            console.log(childKey);
-            console.log(childData.Anno);
+              var rowElReg = document.createElement("td");
+              rowElReg.appendChild(document.createTextNode(childData.Regione));
+              tableRow.appendChild(rowElReg);
 
-            // append tableRow to #table-body
-            document.getElementById('table-body').appendChild(tableRow);
+              console.log(childData);
+              console.log(childKey);
+              console.log(childData.Anno);
+
+              // append tableRow to #table-body
+              document.getElementById('table-body').appendChild(tableRow);
+            });
           });
-        });
+        }
+
 
         // TODO: Add a form to sort by region, year, age, show more
 
         function toggleClass(el, el2) {
           if (el.classList.contains('disabled-view')) {
+            // toggle the position of the .page-footer
+            document.getElementsByClassName('page-footer').style.position = "initial";
+
             el.classList.add('enabled-view');
             el.classList.remove('disabled-view');
             el2.innerHTML = "Hide Victims";
+            // run firebase
+            initFB();
           }
           else if (el.classList.contains('enabled-view')) {
             el.classList.add('disabled-view');
             el.classList.remove('enabled-view');
             el2.innerHTML = "Show Victims";
+            // TODO: change the href of el2
+
+            // toggle the position of the .page-footer
+            document.getElementsByClassName('page-footer').style.position = "absolute";
           }
         }
 
