@@ -130,10 +130,7 @@
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             console.log(childData);
-            for (variable of childData) {
-              console.log("Key: " + childData.key);
-            }
-            // console.log(childData.getKey());
+            console.log(childKey);
           });
         });
 
