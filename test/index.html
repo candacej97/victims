@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>jVectorMap demo</title>
-  <link rel="stylesheet" href="../css/jquery-jvectormap-2.0.1.css" type="text/css" media="screen"/>
-  <script src="../js/jquery-jvectormap-2.0.1.min.js"></script>
-  <script src="../js/jquery-jvectormap-world-mill.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+  <title>map demo</title>
+  <style media="screen">
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div id="world-map" style="width: 600px; height: 400px"></div>
-  <script>
-    $(function(){
-      $('#world-map').vectorMap({map: 'world_mill'});
-    });
-  </script>
+  <img src="../img/italyHigh.svg" alt="map of italy">
+
+
+  <script type="text/javascript" src="../js/italyHigh.js"></script>
 </body>
 </html>

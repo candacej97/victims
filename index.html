@@ -151,9 +151,11 @@
         // TODO: Add a form to sort by region, year, age, show more
 
         function toggleClass(el, el2) {
+          var footer = document.getElementsByClassName('page-footer')[0];
+
           if (el.classList.contains('disabled-view')) {
             // toggle the position of the .page-footer
-            document.getElementsByClassName('page-footer').style.position = "initial";
+            footer.style.position = "initial";
 
             el.classList.add('enabled-view');
             el.classList.remove('disabled-view');
@@ -168,7 +170,7 @@
             // TODO: change the href of el2
 
             // toggle the position of the .page-footer
-            document.getElementsByClassName('page-footer').style.position = "absolute";
+            footer.style.position = "absolute";
           }
         }
 
