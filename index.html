@@ -160,8 +160,12 @@
             el.classList.add('enabled-view');
             el.classList.remove('disabled-view');
             el2.innerHTML = "Hide Victims";
-            // run firebase
-            initFB();
+            // run firebase once
+            var run = TRUE;
+            if (run) {
+              initFB();
+              run = FALSE;
+            }
           }
           else if (el.classList.contains('enabled-view')) {
             el.classList.add('disabled-view');
