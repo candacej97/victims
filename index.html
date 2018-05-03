@@ -60,9 +60,6 @@
             </thead>
 
             <tbody id="table-body">
-              <tr>
-                <td></td>
-              </tr>
             </tbody>
           </table>
 
@@ -137,6 +134,9 @@
             console.log(childData);
             console.log(childKey);
             console.log(childData.Anno);
+
+            // append tableRow to #table-body
+            document.getElementById('table-body').appendChild(tableRow);
           });
         });
 
