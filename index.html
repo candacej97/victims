@@ -134,10 +134,10 @@
       <script src="js/nouislider.js"></script>
       <script src="js/init.js"></script>
 
-
       <!-- Firebase Data -->
       <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-      <script>
+      <script src="js/database.js"></script>
+      <!-- <script>
 
         function initFB() {
           // Initialize Firebase
@@ -195,13 +195,13 @@
           });
 
 
-          var regionKey = document.getElementsByName('name');
-          ref.child('users').orderByChild('Regione').equalTo(regionKey).on("value", function(snapshot) {
-            console.log(snapshot.val());
-            snapshot.forEach(function(data) {
-              console.log(data.key);
-            });
-          });
+          // var regionKey = document.getElementsByName('name');
+          // ref.child('users').orderByChild('Regione').equalTo(regionKey).on("value", function(snapshot) {
+          //   console.log(snapshot.val());
+          //   snapshot.forEach(function(data) {
+          //     console.log(data.key);
+          //   });
+          // });
 
         }
 
@@ -238,6 +238,6 @@
           toggleClass(table, triggerBtn);
         });
 
-      </script>
+      </script> -->
     </body>
   </html>
