@@ -11,6 +11,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="css/nouislider.css">
       <link rel="stylesheet" href="css/styles.css">
     </head>
 
@@ -19,58 +20,101 @@
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Home</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="./">Home</a></li>
+            <li><a href="history/">History of the Mafia</a></li>
+            <li><a href="regions/">Italian Regions</a></li>
+            <li><a href="search/">Search the Database</a></li>
+            <li><a href="report/">Report</a></li>
           </ul>
 
           <ul id="nav-mobile" class="sidenav">
             <li><a href="./">Home</a></li>
+            <li><a href="history/">History of the Mafia</a></li>
+            <li><a href="regions/">Italian Regions</a></li>
+            <li><a href="search/">Search the Database</a></li>
+            <li><a href="report/">Report</a></li>
           </ul>
           <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
       </nav>
-      <div class="section no-pad-bot" id="index-banner">
+
+      <main>
+        <div class="section no-pad-bot" id="index-banner">
+          <div class="container">
+            <br><br>
+            <h1 class="header center orange-text">Get the Information</h1>
+            <div class="row center">
+              <h5 class="header col s12 light">Many people who are victims of crime go forgotten by the public. Let that end right here.</h5>
+            </div>
+            <div class="row center">
+              <a href="#victim-table" id="download-button" class="btn-large waves-effect waves-light orange">Show Victims</a>
+            </div>
+            <br><br>
+
+          </div>
+        </div>
+
+
         <div class="container">
-          <br><br>
-          <h1 class="header center orange-text">Get the Information</h1>
-          <div class="row center">
-            <h5 class="header col s12 light">Many people who are victims of crime go forgotten by the public. Let that end right here.</h5>
+          <div class="section disabled-view" id="victim-table">
+
+            <!-- TODO: Add a form to sort by region, year, age, show more -->
+            <form class="" action="" method="post">
+              <div class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Regioni d'Italia</option>
+                  <option value="1">Abruzzo</option>
+                  <option value="2">Valle d'Aosta</option>
+                  <option value="3">Puglia</option>
+                  <option value="4">Basilicata</option>
+                  <option value="5">Calabria</option>
+                  <option value="6">Emilia-Romagna</option>
+                  <option value="7">Friuli-Venezia Giulia</option>
+                  <option value="8">Lazio</option>
+                  <option value="9">Liguria</option>
+                  <option value="10">Lombardia</option>
+                  <option value="11">Marche</option>
+                  <option value="12">Molise</option>
+                  <option value="13">Piemonte</option>
+                  <option value="14">Sardegna</option>
+                  <option value="15">Sicilia</option>
+                  <option value="16">Trentino-Alto Adige</option>
+                  <option value="17">Toscana</option>
+                  <option value="18">Umbria</option>
+                  <option value="19">Veneto</option>
+                </select>
+                <select>
+                  <option value="" disabled selected>Ete</option>
+                  <option value="1">15 e meno</option>
+                  <option value="2">16 a 25</option>
+                  <option value="3">26 a 45</option>
+                  <option value="4">46 a 65</option>
+                  <option value="5">66 e più</option>
+                </select>
+              </div>
+              <div id="test-slider"></div>
+            </form>
+
+            <!-- NOTE: this table is empty to be filled onclick of #download-button -->
+            <table class="responsive-table">
+              <thead id="table-header">
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Eta</th>
+                    <th>Anno</th>
+                    <th>Regione</th>
+                </tr>
+              </thead>
+
+              <tbody id="table-body">
+              </tbody>
+            </table>
+
+
           </div>
-          <div class="row center">
-            <a href="#victim-table" id="download-button" class="btn-large waves-effect waves-light orange">Show Victims</a>
-          </div>
           <br><br>
-
         </div>
-      </div>
-
-
-      <div class="container">
-        <div class="section disabled-view" id="victim-table">
-
-          <!-- TODO: Add a form to sort by region, year, age, show more -->
-          <form class="" action="index.html" method="post">
-
-          </form>
-
-          <!-- NOTE: this table is empty to be filled onclick of #download-button -->
-          <table class="responsive-table">
-            <thead id="table-header">
-              <tr>
-                  <th>Nome</th>
-                  <th>Cognome</th>
-                  <th>Eta</th>
-                  <th>Anno</th>
-                  <th>Regione</th>
-              </tr>
-            </thead>
-
-            <tbody id="table-body">
-            </tbody>
-          </table>
-
-
-        </div>
-        <br><br>
-      </div>
+      </main>
 
       <footer class="page-footer orange">
         <div class="footer-copyright">
@@ -83,9 +127,13 @@
 
 
 
+
       <!--JavaScript at end of body for optimized loading-->
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="js/nouislider.js"></script>
+      <script src="js/init.js"></script>
+
 
       <!-- Firebase Data -->
       <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
@@ -137,35 +185,43 @@
               rowElReg.appendChild(document.createTextNode(childData.Regione));
               tableRow.appendChild(rowElReg);
 
-              console.log(childData);
-              console.log(childKey);
+              // console.log(childData);
+              // console.log(childKey);
               console.log(childData.Anno);
 
               // append tableRow to #table-body
               document.getElementById('table-body').appendChild(tableRow);
             });
           });
+
+
+          var regionKey = document.getElementsByName('name');
+          ref.child('users').orderByChild('Regione').equalTo(regionKey).on("value", function(snapshot) {
+            console.log(snapshot.val());
+            snapshot.forEach(function(data) {
+              console.log(data.key);
+            });
+          });
+
         }
 
 
         // TODO: Add a form to sort by region, year, age, show more
 
         function toggleClass(el, el2) {
-          var footer = document.getElementsByClassName('page-footer')[0];
 
           if (el.classList.contains('disabled-view')) {
-            // toggle the position of the .page-footer
-            footer.style.position = "initial";
 
-            el.classList.add('enabled-view');
-            el.classList.remove('disabled-view');
-            el2.innerHTML = "Hide Victims";
             // run firebase once
             var run = true;
             if (run) {
               initFB();
               run = false;
             }
+
+            el.classList.add('enabled-view');
+            el.classList.remove('disabled-view');
+            el2.innerHTML = "Hide Victims";
           }
           else if (el.classList.contains('enabled-view')) {
             el.classList.add('disabled-view');
@@ -173,8 +229,6 @@
             el2.innerHTML = "Show Victims";
             // TODO: change the href of el2
 
-            // toggle the position of the .page-footer
-            footer.style.position = "absolute";
           }
         }
 
@@ -183,7 +237,6 @@
           var table = document.getElementById('victim-table');
           toggleClass(table, triggerBtn);
         });
-
 
       </script>
     </body>

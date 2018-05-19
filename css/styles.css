@@ -1,8 +1,12 @@
-.page-footer {
-  padding: 0;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
+/* sticky footer */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .disabled-view {
@@ -11,4 +15,12 @@
 
 .enabled-view {
   display: block;
+}
+
+
+/* styles for the left form of the list of victims */
+.input-field {
+  border: 1px solid;
+  padding: 20px;
+  float: left;
 }
